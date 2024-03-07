@@ -80,11 +80,14 @@ app
     res.status(404).send("Page introuvable !");
   });
 
-// app.all('/secret', (req, res, next)=>{
-//   res.send('accessing your secret files')
-//   next()
-// })
+app.all('/secret', (req, res, next)=>{
+  res.send('accessing your secret files')
+  next()
+})
 
 app.listen(port, () =>
   console.log(`server is running on http://localhost:${port}`)
 );
+
+
+export default app
