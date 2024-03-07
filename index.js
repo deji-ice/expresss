@@ -1,7 +1,15 @@
 import express from "express";
+import bookRoute from './routes/book.js'
+import bodyParser from "body-parser";
+
 
 const app = express();
 const port = 4040;
+
+
+app.use(bodyParser.json())
+app.use('/api', bookRoute)
+
 
 app.get('/api/v1/stories/:id', function(req,res, next) { 
   //do authorization
@@ -32,7 +40,7 @@ const authAdmin =  (req, res, next) => {
 
   res.send(); 
  }
- 
+
  
  const admin = [authAdmin, getUsers, renderUsers];
  app.get('/admin', admin);
